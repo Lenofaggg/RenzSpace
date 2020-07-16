@@ -21,12 +21,7 @@ namespace ConsoleApp1
             Passenger pas = new Passenger();
 
 
-            //for (int i = 0; i < ob.trains.Count(); i++)
-            //{
-            //    Console.WriteLine(ob.trains[i].number + " / " + ob.trains[i].station + " / " + ob.trains[i].time + " / " + ob.trains[i].date + " / " + ob.trains[i].price);
-            //}
-
-            //Console.ReadKey();
+     
 
 
             Console.WriteLine("Пассажир");
