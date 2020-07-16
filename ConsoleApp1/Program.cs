@@ -57,7 +57,7 @@ namespace ConsoleApp1
                          for (int z = 0; z < j; z++)//проверка на даты
                          {
                              if ((Convert.ToInt32(re.date) >= Convert.ToInt32(ob.trains[i].dates[z])))
-                              //   if (re.time == (Convert.ToString(ob.trains[i].times[z])))//проверка введённой даты
+                            
                                  {
                                      Console.WriteLine("уважаемый " + pas.name + " по вашему запросу доступны поезда: " + ob.trains[i].number + " " + ob.trains[i].station);
                                      bol++;
