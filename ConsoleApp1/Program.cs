@@ -21,7 +21,7 @@ namespace ConsoleApp1
             Passenger pas = new Passenger();
 
 
-     
+     //test test test
 
 
             Console.WriteLine("Пассажир");
