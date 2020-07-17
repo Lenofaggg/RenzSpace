@@ -100,6 +100,9 @@ namespace ConsoleApp1
 
         }
 
+
+        //i love minecraft
+
         class Train
         {
             public int number;
