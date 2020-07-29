@@ -11,7 +11,7 @@ namespace Tutorial.SqlConn
     {
         public static SqlConnection GetDBConnection()
         {
-            string datasource = @"tran-vmware\SQLEXPRESS";
+            string datasource = @"DESKTOP-GH3H7IM\SQLEXPRESS";
 
             string database = "simplehr";
             string username = "sa";
