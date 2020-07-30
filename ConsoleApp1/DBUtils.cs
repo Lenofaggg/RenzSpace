@@ -13,9 +13,9 @@ namespace Tutorial.SqlConn
         {
             string datasource = @"DESKTOP-GH3H7IM\SQLEXPRESS";
 
-            string database = "simplehr";
+            string database = "test";
             string username = "sa";
-            string password = "1234";
+            string password = "228228";
 
             return DBSQLServerUtils.GetDBConnection(datasource, database, username, password);
         }
