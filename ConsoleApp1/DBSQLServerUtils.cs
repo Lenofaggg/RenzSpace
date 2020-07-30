@@ -12,11 +12,16 @@ namespace Tutorial.SqlConn
     {
 
         public static SqlConnection
-                 GetDBConnection(string datasource, string database, string username, string password)
+        GetDBConnection(string datasource, string database, string username, string password)
         {
-            //
-            // Data Source=TRAN-VMWARE\SQLEXPRESS;Initial Catalog=simplehr;Persist Security Info=True;User ID=sa;Password=12345
-            //
+
+            //Data Source = DESKTOP - GH3H7IM\SQLEXPRESS;
+            //Initial Catalog = test;
+            //Persist Security Info = True;
+            //User ID = sa;
+            //Password = 228228;
+
+
             string connString = @"Data Source=" + datasource + ";Initial Catalog="
                         + database + ";Persist Security Info=True;User ID=" + username + ";Password=" + password;
 
