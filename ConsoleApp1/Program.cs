@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Tutorial.SqlConn;
+using System.Data.SqlClient;
 
 namespace ConsoleApp1
 {
@@ -13,7 +15,7 @@ namespace ConsoleApp1
         {
             StreamReader sr_tr = new StreamReader("../../Тесты/Поезда.txt");
 
-            List<Train> trains = new List<Train>();        
+            List<Train> trains = new List<Train>();
 
             Cashier ob = new Cashier();
             ob.initial();
@@ -21,70 +23,70 @@ namespace ConsoleApp1
             Passenger pas = new Passenger();
 
 
-     //test test test
+
 
 
             Console.WriteLine("Пассажир");
 
             Console.WriteLine("Введите имя");
-             pas.name = Console.ReadLine();
+            pas.name = Console.ReadLine();
 
 
 
-             
-             Console.WriteLine("Kонечная станция/Tочное время/Число месяца");
-             string inform;
-             inform = Console.ReadLine();
 
-             string[] informs = inform.Split(new char[] { '/' });
-             int bol = 0;
+            Console.WriteLine("Kонечная станция/Tочное время/Число месяца");
+            string inform;
+            inform = Console.ReadLine();
+
+            string[] informs = inform.Split(new char[] { '/' });
+            int bol = 0;
 
             Request re = new Request(informs[0], informs[1], informs[2]);
 
-            
 
-             for (int i = 0; i < ob.trains.Count(); i++)
-             {                
-                 for (int j = 1; j < ob.trains[i].stations.Count(); j++)//поиск станций
-                 {
-                     if (re.station == Convert.ToString(ob.trains[i].stations[j]))
-                     {
-                         for (int z = 0; z < j; z++)//проверка на даты
-                         {
-                             if ((Convert.ToInt32(re.date) >= Convert.ToInt32(ob.trains[i].dates[z])))
-                            
-                                 {
-                                     Console.WriteLine("уважаемый " + pas.name + " по вашему запросу доступны поезда: " + ob.trains[i].number + " " + ob.trains[i].station);
-                                     bol++;
-                                 }
-                             
-                         }
 
-                     }
-                 }
-             }
+            for (int i = 0; i < ob.trains.Count(); i++)
+            {
+                for (int j = 1; j < ob.trains[i].stations.Count(); j++)//поиск станций
+                {
+                    if (re.station == Convert.ToString(ob.trains[i].stations[j]))
+                    {
+                        for (int z = 0; z < j; z++)//проверка на даты
+                        {
+                            if ((Convert.ToInt32(re.date) >= Convert.ToInt32(ob.trains[i].dates[z])))
 
-             
-             if (bol == 0)
-             {
-                 Console.WriteLine("неккоректный/неправильный ввод данных");
-             }
-             else
-             {
-                 Console.WriteLine("введите номер поезда который хотите выбрать");
-                 ac.number = Convert.ToInt32(Console.ReadLine());
-                 for (int i = 0; i < ob.trains.Count(); i++)
-                 {
-                     if (ac.number == ob.trains[i].number)
-                     {
-                         ac.price = ob.trains[i].price;
-                         ac.station = re.station;
-                         ac.time = re.time;
-                         ac.date = re.date;
-                         ac.name = pas.name;
-                     }
-                 }
-             }
+                            {
+                                Console.WriteLine("уважаемый " + pas.name + " по вашему запросу доступны поезда: " + ob.trains[i].number + " " + ob.trains[i].station);
+                                bol++;
+                            }
+
+                        }
+
+                    }
+                }
+            }
+
+
+            if (bol == 0)
+            {
+                Console.WriteLine("неккоректный/неправильный ввод данных");
+            }
+            else
+            {
+                Console.WriteLine("введите номер поезда который хотите выбрать");
+                ac.number = Convert.ToInt32(Console.ReadLine());
+                for (int i = 0; i < ob.trains.Count(); i++)
+                {
+                    if (ac.number == ob.trains[i].number)
+                    {
+                        ac.price = ob.trains[i].price;
+                        ac.station = re.station;
+                        ac.time = re.time;
+                        ac.date = re.date;
+                        ac.name = pas.name;
+                    }
+                }
+            }
 
             ac.Cost();
 
@@ -96,9 +98,26 @@ namespace ConsoleApp1
             ob.Adding(inform.Split(new char[] { '/' }));
 
             ob.destruct();
-            
 
+            Console.WriteLine("Getting Connection ...");
+            SqlConnection conn = DBUtils.GetDBConnection();
+
+            try
+            {
+                Console.WriteLine("Openning Connection ...");
+
+                conn.Open();
+
+                Console.WriteLine("Connection successful!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+
+            Console.Read();
         }
+    }
 
 
         //i love minecraft
@@ -237,5 +256,5 @@ namespace ConsoleApp1
         }
 
        
-    }
+    
 }
