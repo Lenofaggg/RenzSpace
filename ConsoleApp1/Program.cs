@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using Tutorial.SqlConn;
 using System.Data.SqlClient;
 
 namespace ConsoleApp1
@@ -99,23 +98,7 @@ namespace ConsoleApp1
 
             ob.destruct();
 
-            Console.WriteLine("Getting Connection ...");
-            SqlConnection conn = DBUtils.GetDBConnection();
-
-            try
-            {
-                Console.WriteLine("Openning Connection ...");
-
-                conn.Open();
-
-                Console.WriteLine("Connection successful!");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: " + e.Message);
-            }
-
-            Console.Read();
+           
         }
     }
 
